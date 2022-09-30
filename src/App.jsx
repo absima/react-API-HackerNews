@@ -6,6 +6,8 @@ import ListFetched from './listFetched';
 import tryFetching from './tryFetch'
 import Pagination from "./paginate"
 
+import './App.css'
+
 
 export default function App() {
   // // for the fetched data
@@ -40,7 +42,7 @@ export default function App() {
 
   
   // The following is lame; to be modified.
-    return (        
+    return (      
       <>
         <Searcher text = {text} setText = {setText} triggerSearch = {triggerSearch}/>
           {

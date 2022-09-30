@@ -5,8 +5,12 @@ export default function Searcher({text, setText, triggerSearch}){
   return (
     <>
       <header>
+        <div>
+          <h1> Searching from the Hacker News </h1>
+        </div>  
+
         <div className="search-container">
-          <form onSubmit={
+          <form className="example" onSubmit={
             (event) => {
               event.preventDefault();
               setText(event.target.elements[0].value);
