@@ -1,86 +1,79 @@
 import React, { useState, useEffect } from 'react';
-import LoadingSpin from "react-loading-spin";
+import LoadingSpin from 'react-loading-spin';
 
-import Searcher from './headerSearch';
+import Searcher from './searcher';
 import ListFetched from './listFetched';
-import tryFetching from './tryFetch'
-import Pagination from "./paginate"
+import tryFetch from './tryFetch';
+import Pagination from './paginate';
 
-import './App.css'
-
+import './App.css';
 
 export default function App() {
   // // for the fetched data
-  const [state, setState] = useState([]); 
+  const [state, setState] = useState([]);
   // // for the search text
-  const [text, setText] = useState(" "); //
+  const [text, setText] = useState(' '); //
   // // for error message
-  const [merror, setMerror] = useState(""); 
+  const [merror, setMerror] = useState('');
   // // for loading spinner
   const [spin, setSpin] = useState(true);
   // // for pagination
   // const [numHits, setNumHits] = useState(0)
-  const [page, setPage] = useState(0)
+  const [page, setPage] = useState(0);
   // const [hitspp, setHitspp] = useState(80)
   const [hitsPerPage, setHitsPerPage] = useState(12);
   // const [localPerPage, setLocalPerPage] = useState(5);
 
   // useEffect(()=>{},[state,text, merror, spin, page, hitsPerPage])
 
-  useEffect(() => { 
-    triggerSearch()
-  }, [page, hitsPerPage])
+  useEffect(() => {
+    triggerSearch();
+  }, [page, hitsPerPage]);
 
   // // don't know why I need this.
-  useEffect(() => { setPage(0)}, [text, hitsPerPage]);
+  useEffect(() => {
+    setPage(0);
+  }, [text, hitsPerPage]);
 
-  const triggerSearch = () => {
-    tryFetching(text, page, hitsPerPage, setState, setText, setSpin, setMerror)
-  }
-  
+  const triggerSearch = (text) => {
+    if (text) {
+      setText(text);
+    }
 
+    tryFetch(text, page, hitsPerPage, setState, setText, setSpin, setMerror);
+  };
 
-  
   // The following is lame; to be modified.
-    return (      
-      <>
-        <Searcher text = {text} setText = {setText} triggerSearch = {triggerSearch}/>
-          {
-            spin? (  
-              <>
-                <h3>Fetching with keyword:</h3> 
-                <h4>"{text}"</h4>
-                <div className="loading_spin">
-                  <LoadingSpin />
-                </div>
-              </>): 
-            !state.length? (
-              <>
-                <h3>No items found with keyword:</h3> 
-                <h4>"{text}"</h4>
-              </>): 
-            (
-              <>
-              <h2>Search results for "{text}"</h2>
-              <ul>
-                <ListFetched state={state}/>
-              </ul>
-              <Pagination state={state} page={page} setPage={setPage} />
-              </>
-            )
-          }
-      </>
-    )
+  return (
+    <>
+      <Searcher text={text} setText={setText} triggerSearch={triggerSearch} />
+      {spin ? (
+        <>
+          <h3>Fetching with keyword:</h3>
+          <h4>"{text}"</h4>
+          <div className="loading_spin">
+            <LoadingSpin />
+          </div>
+        </>
+      ) : !state.length ? (
+        <>
+          <h3>No items found with keyword:</h3>
+          <h4>"{text}"</h4>
+        </>
+      ) : (
+        <>
+          <h2>Search results </h2>
+          <ul>
+            <ListFetched state={state} />
+          </ul>
+          <div className="pagination__div">
+            <Pagination state={state} page={page} setPage={setPage} />
+          </div>
+        </>
+      )}
+    </>
+  );
 }
-
-
-
-
-
-
-
-
-
 
 // import { useState, useEffect } from "react";
 

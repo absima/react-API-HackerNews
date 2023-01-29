@@ -1,10 +1,98 @@
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px; */
   margin: 0 auto;
   padding: 2rem;
   /* text-align: center; */
 }
 
+/* ----- */
+* {
+  box-sizing: border-box;
+}
+
+form.form input[type='text'] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 70%;
+  background: #f1f1f1;
+}
+
+form.form button {
+  float: left;
+  width: 30%;
+  padding: 10px;
+  background: #2196f3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.form button:hover {
+  background: #0b7dda;
+}
+
+form.form::after {
+  content: '';
+  clear: both;
+  display: table;
+}
+
+li {
+  max-width: 25rem;
+}
+.search-container {
+  margin: 0;
+  max-width: 25rem;
+}
+.pagination__div {
+  max-width: 25rem;
+  display: flex;
+  justify-content: space-between;
+  /* margin: 0 auto; */
+}
+
+.pagination-button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.4rem;
+  font-size: 1em;
+  font-weight: bold;
+  font-family: inherit;
+  background-color: #e3e9ec;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+  background-color: #0b7dda;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+.pagination-button {
+  border-color: black;
+}
+
+/* 
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -30,55 +118,4 @@
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-
-/* ----- */
-* {
-  box-sizing: border-box;
-}
-
-form.example input[type=text] {
-  padding: 10px;
-  font-size: 17px;
-  border: 1px solid grey;
-  float: left;
-  width: 80%;
-  background: #f1f1f1;
-}
-
-form.example button {
-  float: left;
-  width: 20%;
-  padding: 10px;
-  background: #2196F3;
-  color: white;
-  font-size: 17px;
-  border: 1px solid grey;
-  border-left: none;
-  cursor: pointer;
-}
-
-form.example button:hover {
-  background: #0b7dda;
-}
-
-form.example::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-.search-container{
-  /* border: 5px solid red;  */
-}
-
-
+} */

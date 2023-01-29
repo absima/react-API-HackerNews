@@ -6,22 +6,32 @@ export default function Searcher({text, setText, triggerSearch}){
     <>
       <header>
         <div>
-          <h1> Searching from the Hacker News </h1>
+          <h1> Search the Hacker News </h1>
+          <h3
+          style={{color:'grey'}}
+          >(my version)</h3>
         </div>  
 
         <div className="search-container">
-          <form className="example" onSubmit={
+          <form className="form" onSubmit={
             (event) => {
               event.preventDefault();
               setText(event.target.elements[0].value);
-              triggerSearch();
-              // setText("")
+              triggerSearch(text);
+              // remove the text from the input field after submit
+              
             }
           }> {/* onSubmit={funcSubmit} */}
-            <input id='search__input' value={text} type="text" placeholder="Search..." name="search" 
+            <input 
+            id='search__input' 
+            value={text} 
+            type="text" 
+            placeholder="Search..." 
+            name="search" 
             style={{padding:10}}
             onChange={
               (e)=>setText(e.target.value)
+
             }
             />   
             {/* onKeyUp={isEnter} onChange={funcChange}  */}

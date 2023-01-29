@@ -1,6 +1,12 @@
-const tryFetching = (text, page, hitsPerPage, setState, setText, setSpin, setMerror) => {
+// clear input field after submit
+
+const tryFetch = (text, page, hitsPerPage, setState, setText, setSpin, setMerror) => {
   
   // const maxHits = 100;
+  if (text === '') {
+    setMerror("Error: Please enter a search term");
+    return;
+  }
   
   return(
     // const timer = setTimeout(fetch(urll), 5000)//
@@ -10,12 +16,11 @@ const tryFetching = (text, page, hitsPerPage, setState, setText, setSpin, setMer
     .then((wanted) => {
       setState(wanted);
       setSpin(false)
-      // setText(" ")
-      // return wanted;
+      setText(' ');
     })
     .catch(() => {
       setMerror("Error: Fetching Failed");
   }))
 }
 
-export default tryFetching;
+export default tryFetch;
